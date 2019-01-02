@@ -7,13 +7,13 @@ import net.md_5.bungee.event.EventHandler;
 
 public class ProxyPingListener implements Listener {
 	
-	private MotdManager manager;
+	private PingManager manager;
 
-	public MotdManager getManager() {
+	public PingManager getManager() {
 		return manager;
 	}
 
-	public ProxyPingListener(MotdManager manager) {
+	public ProxyPingListener(PingManager manager) {
 		this.manager = manager;
 	}
 	
