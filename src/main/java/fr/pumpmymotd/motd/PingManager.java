@@ -4,10 +4,24 @@ import java.util.HashMap;
 
 import fr.pumpmymotd.config.ConfigUtils;
 
-public class MotdManager {
+public class PingManager {
+	
+	private HashMap<String, Ping> pings;
+	private ConfigUtils config;
 
-	public MotdManager(ConfigUtils config) {
-		// TODO Auto-generated constructor stub
+	public PingManager(ConfigUtils config) {
+		
+		this.pings = new HashMap<String, Ping>();
+		this.config = config;
+		
+	}
+
+	public HashMap<String, Ping> getPings() {
+		return pings;
+	}
+
+	public ConfigUtils getConfig() {
+		return config;
 	}
 
 }
