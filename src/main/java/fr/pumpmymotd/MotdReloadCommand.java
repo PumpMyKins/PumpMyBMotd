@@ -12,9 +12,9 @@ public class MotdReloadCommand extends Command {
 		super(name);
 	}
 
-	public MotdReloadCommand(String name,PingManager manager) {
+	public MotdReloadCommand(PingManager manager) {
 		
-		this(name);
+		this("pmmotd-reload");
 		this.manager = manager;
 		
 	}
