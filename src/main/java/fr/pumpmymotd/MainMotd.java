@@ -6,7 +6,7 @@ import net.md_5.bungee.api.plugin.Plugin;
 
 public class MainMotd extends Plugin{
 
-	private MotdManager manager;
+	private PingManager manager;
 	
 	@Override
 	public void onEnable() {
@@ -14,7 +14,7 @@ public class MainMotd extends Plugin{
 		ConfigUtils config = ConfigUtils.getConfig(this);
 		config.initDataFolder();
 		
-		this.manager = new MotdManager(config);
+		this.manager = new PingManager(config);
 		
 		getProxy().getPluginManager().registerListener(this, new ProxyPingListener(manager));
 		
