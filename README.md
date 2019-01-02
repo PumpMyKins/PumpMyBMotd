@@ -1,0 +1,2 @@
+# PumpMyMotd
+Bungeecord Motd plugin
