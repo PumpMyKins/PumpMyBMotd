@@ -14,9 +14,9 @@ public class MainMotd extends Plugin{
 		ConfigUtils config = ConfigUtils.getConfig(this);
 		config.initDataFolder();
 		
-		MotdManager manager = new MotdManager(config);
+		this.manager = new MotdManager(config);
 		
-		getProxy().getPluginManager().registerListener(this, new ProxyPingListener(null));
+		getProxy().getPluginManager().registerListener(this, new ProxyPingListener(manager));
 		
 	}
 	
