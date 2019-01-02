@@ -18,6 +18,8 @@ public class MainMotd extends Plugin{
 		
 		getProxy().getPluginManager().registerListener(this, new ProxyPingListener(manager));
 		
+		getProxy().getPluginManager().registerCommand(this, new MotdReloadCommand(this.manager));
+		
 	}
 	
 }
