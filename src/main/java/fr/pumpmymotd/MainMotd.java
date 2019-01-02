@@ -9,6 +9,11 @@ public class MainMotd extends Plugin{
 	@Override
 	public void onEnable() {
 		
+		ConfigUtils config = ConfigUtils.getConfig(this);
+		config.initDataFolder();
+		
+		MotdManager manager = new MotdManager(config);
+		
 		getProxy().getPluginManager().registerListener(this, new ProxyPingListener(null));
 		
 	}
