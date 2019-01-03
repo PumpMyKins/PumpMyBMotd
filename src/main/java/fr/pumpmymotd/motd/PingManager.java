@@ -21,6 +21,20 @@ public class PingManager {
 		
 	}
 
+	public void load() throws Exception {
+			
+		Configuration config = this.config.getConfiguration("plugin.yml");
+			
+		this.defaultPing = new Ping.PingBuilder().build();
+		
+		for (File file : this.config.getDataFolder().listFiles()) {
+			
+			
+			
+		}
+		
+	}
+
 	public HashMap<String, Ping> getPings() {
 		return pings;
 	}
