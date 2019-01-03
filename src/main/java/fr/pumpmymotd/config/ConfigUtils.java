@@ -10,24 +10,12 @@ import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;
 
-/** 
- * Classe de methods utiles pour l'utilisation des configurations BungeeCord
- * @author Clem-Fern
- */
-
 public class ConfigUtils {
-
-	private static ConfigUtils config = new ConfigUtils(); // variable instancier de la class ConfigUtils par defaut
-	private static MainMotd main;	// variable contenant une instance courante du Main
 	
-	/**
-	 * 
-	 * @param m MainBungeeMotd / instance de la class principale
-	 * @return Instance de ConfigUtils initialisé au paramètre MainBungeeMotd donné
-	 */
-	public static ConfigUtils getConfig(MainMotd m) {		//Methods d'initialisation de la class ConfigUtils
-		main = m;
-		return config; // retournant
+	private MainMotd main;	
+
+	public ConfigUtils(MainMotd main) {
+		this.main = main;
 	}
 
 	public void initDataFolder() {
@@ -40,10 +28,10 @@ public class ConfigUtils {
 	
 	public File initAndGetFile(String fileName) {
 		
-		File file = new File(main.getDataFolder(),fileName);
+		File file = new File(this.main.getDataFolder(),fileName);
 		
 		if(!file.exists()) {
-			try (InputStream in = main.getResourceAsStream(fileName)){
+			try (InputStream in = this.main.getResourceAsStream(fileName)){
 				Files.copy(in, file.toPath());
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
@@ -54,9 +42,13 @@ public class ConfigUtils {
 		return file;
 	}
 	
+	public File getDataFolder() {
+		return this.main.getDataFolder();
+	}
+	
 	public Configuration getConfiguration(String fileName) throws Exception {
 		
-		File file = new File(main.getDataFolder(),fileName);
+		File file = new File(this.main.getDataFolder(),fileName);
 		
 		try {
 			return ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
