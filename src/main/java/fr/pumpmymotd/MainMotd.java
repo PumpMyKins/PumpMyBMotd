@@ -13,6 +13,7 @@ public class MainMotd extends Plugin{
 		
 		ConfigUtils config = new ConfigUtils(this);
 		config.initDataFolder();
+		config.initAndGetFile("config.yml");
 		
 		this.manager = new PingManager(config);
 		
