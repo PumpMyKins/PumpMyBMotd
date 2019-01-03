@@ -1,5 +1,6 @@
 package fr.pumpmymotd.motd;
 
+import java.io.File;
 import java.util.HashMap;
 
 import fr.pumpmymotd.config.ConfigUtils;
