@@ -23,7 +23,16 @@ public class MotdReloadCommand extends Command {
 	
 	@Override
 	public void execute(CommandSender sender, String[] args) {
-		// TODO Auto-generated method stub
+		
+		try {
+			manager.load();
+			sender.sendMessage(new ComponentBuilder("Motd reloaded succesfuly !").color(ChatColor.AQUA).create());
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+			sender.sendMessage(new ComponentBuilder("Motd reloaded ERROR !").color(ChatColor.RED).create());
+			
+		}
 
 	}
 
