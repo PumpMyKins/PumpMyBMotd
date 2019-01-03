@@ -15,7 +15,18 @@ public class MainMotd extends Plugin{
 		config.initDataFolder();
 		
 		this.manager = new PingManager(config);
-		manager.load();
+		
+		try {
+			
+			manager.load();
+			
+		} catch (Exception e) {
+
+			e.printStackTrace();
+			this.getProxy().stop();
+			return;
+			
+		}
 		
 		getProxy().getPluginManager().registerListener(this, new ProxyPingListener(manager));
 		
