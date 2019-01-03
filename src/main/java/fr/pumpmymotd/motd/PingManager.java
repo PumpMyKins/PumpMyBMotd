@@ -3,6 +3,7 @@ package fr.pumpmymotd.motd;
 import java.util.HashMap;
 
 import fr.pumpmymotd.config.ConfigUtils;
+import net.md_5.bungee.config.Configuration;
 
 public class PingManager {
 	
