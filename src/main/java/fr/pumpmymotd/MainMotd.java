@@ -11,10 +11,11 @@ public class MainMotd extends Plugin{
 	@Override
 	public void onEnable() {
 		
-		ConfigUtils config = ConfigUtils.getConfig(this);
+		ConfigUtils config = new ConfigUtils(this);
 		config.initDataFolder();
 		
 		this.manager = new PingManager(config);
+		manager.load();
 		
 		getProxy().getPluginManager().registerListener(this, new ProxyPingListener(manager));
 		
