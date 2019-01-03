@@ -42,13 +42,9 @@ public class PingManager {
 	public ConfigUtils getConfig() {
 		return config;
 	}
-
-	public void load() throws Exception {
-			
-		Configuration config = this.config.getConfiguration("plugin.yml");
-			
-		Ping ping = new Ping.PingBuilder().build();
-		
+	
+	public Ping getDefaultPing() {
+		return defaultPing;
 	}
 
 }
