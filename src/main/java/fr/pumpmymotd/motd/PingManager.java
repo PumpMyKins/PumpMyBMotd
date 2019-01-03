@@ -28,4 +28,12 @@ public class PingManager {
 		return config;
 	}
 
+	public void load() throws Exception {
+			
+		Configuration config = this.config.getConfiguration("plugin.yml");
+			
+		Ping ping = new Ping.PingBuilder().build();
+		
+	}
+
 }
