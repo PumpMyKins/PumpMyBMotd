@@ -50,14 +50,11 @@ public class ConfigUtils {
 		return this.main.getDataFolder();
 	}
 	
-	public Configuration getConfiguration(String fileName) throws Exception {
-		
-		File file = new File(this.main.getDataFolder(),fileName);
-		
+	public Configuration getConfiguration(File f) throws Exception {		
 		try {
-			return ConfigurationProvider.getProvider(YamlConfiguration.class).load(file);
+			return ConfigurationProvider.getProvider(YamlConfiguration.class).load(f);
 		} catch (Exception e) {
-			throw new Exception( fileName + " impossible de récupérer la configuration" );
+			throw new Exception( f.getName() + " impossible de récupérer la configuration" );
 		}		
 	}
 	
