@@ -29,8 +29,7 @@ public class ProxyPingListener implements Listener {
 		
 		ServerPing serverPing = event.getResponse();
 		
-		serverPing.setDescription("Test");
-		serverPing.setVersion(new Protocol("Reboot en cours", -1));
+		serverPing.setVersion(new Protocol("Spigot 1.2.3", 1));
 		
 		event.setResponse(serverPing);				
 		
