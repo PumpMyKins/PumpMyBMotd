@@ -15,6 +15,13 @@ public class PingManager {
 	private Ping defaultPing;
 	private ConfigUtils config;
 
+	public static class PingConstant {
+		
+		public final static String DEFAULT_MOTD_FILE_NAME = "default.yml";
+		public final static String FAVICONS_FOLDER_NAME = "favicons";
+		
+	}
+	
 	public PingManager(ConfigUtils config) {
 		
 		this.pings = new HashMap<String, Ping>();
