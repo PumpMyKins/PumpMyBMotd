@@ -1,5 +1,7 @@
 package fr.pumpmymotd.motd;
 
+import java.io.File;
+
 public class Ping {
 
 	private Ping() {
