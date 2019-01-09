@@ -31,17 +31,89 @@ public class PingManager {
 		
 	}
 
+	@SuppressWarnings("deprecation")
 	public void load() throws Exception {
-			
-		Configuration config = this.config.getConfiguration("plugin.yml");
-			
-		this.defaultPing = new Ping.PingBuilder().build();
 		
-		for (File file : this.config.getDataFolder().listFiles()) {
+		File faviconFile = new File(this.config.getDataFolder(),PingConstant.FAVICONS_FOLDER_NAME);
+		faviconFile.mkdir();
+		
+		this.createDefaultMtdFile();			
+		this.defaultPing = this.getPingFromFile(new File(this.config.getDataFolder(),PingConstant.DEFAULT_MOTD_FILE_NAME));
+		
+		for (ListenerInfo listener : this.config.getMain().getProxy().getConfig().getListeners()) {
 			
+			for (String host : listener.getForcedHosts().keySet()) {
+				
+				File file = new File(this.config.getDataFolder(), host + ".yml");
+				file.createNewFile();	
+				
+				this.initMotdFileConfiguration(file);
+				this.addHostPing(host, this.getPingFromFile(file));
+				
+			}
 			
+		}	
+		
+	}
+	
+	private Ping getPingFromFile(File f) throws Exception {
+		
+		Configuration config = this.config.getConfiguration(f);
+		PingBuilder builder = new PingBuilder();
+		
+		builder.setLine1(config.getString("line1"));
+		builder.setLine2(config.getString("line2"));
+		
+		builder.setFavicon(new File(this.config.getDataFolder(),PingConstant.FAVICONS_FOLDER_NAME + File.separator + config.getString("favicon")));
+			
+		return builder.build();
+		
+	}
+	
+	private void createDefaultMtdFile() throws Exception {
+		
+		File defaultFile = new File(this.config.getDataFolder(),PingConstant.DEFAULT_MOTD_FILE_NAME);
+		defaultFile.createNewFile();
+		
+		this.initMotdFileConfiguration(defaultFile);
+		
+	}
+	
+	private void initMotdFileConfiguration(File f) throws Exception {
+
+		Configuration conf = YamlConfiguration.getProvider(YamlConfiguration.class).load(f);
+		
+		if(!conf.contains("line1")) {
+			
+			conf.set("line1", new String());
 			
 		}
+		
+		if(!conf.contains("line2")) {
+			
+			conf.set("line2", new String());
+			
+			
+			conf.set("favicon", new String());
+			
+		}
+		
+		YamlConfiguration.getProvider(YamlConfiguration.class).save(conf, f);
+		
+	}
+	
+	public void addHostPing(String host, Ping ping) {
+		
+		if(!this.pings.containsKey(host)) {
+			
+			System.out.println("Host Motd added : " + host);
+			
+			this.pings.put(host, ping);
+		}else {
+			
+			System.err.println("Host Motd duplication : " + host);
+			
+		}	
 		
 	}
 
