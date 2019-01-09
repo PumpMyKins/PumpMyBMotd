@@ -27,7 +27,7 @@ public class ProxyPingListener implements Listener {
 		
 		String host = "host";
 		
-		Ping ping = this.manager.getPing(host);
+		//Ping ping = this.manager.getPing(host);
 		
 		
 	}
