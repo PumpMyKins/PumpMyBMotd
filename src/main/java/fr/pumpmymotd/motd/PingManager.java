@@ -33,7 +33,7 @@ public class PingManager {
 	
 	public Ping getPing(String host) {
 		
-		if(this.pings.containsKey(host)) {
+		if(host != null & this.pings.containsKey(host)) {
 			
 			return this.pings.get(host);
 			
