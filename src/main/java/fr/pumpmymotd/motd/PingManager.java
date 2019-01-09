@@ -30,6 +30,20 @@ public class PingManager {
 		this.defaultPing = null;
 		
 	}
+	
+	public Ping getPing(String host) {
+		
+		if(this.pings.containsKey(host)) {
+			
+			return this.pings.get(host);
+			
+		}else {
+			
+			return this.defaultPing;
+			
+		}
+		
+	}
 
 	@SuppressWarnings("deprecation")
 	public void load() throws Exception {

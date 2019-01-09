@@ -22,12 +22,17 @@ public class ProxyPingListener implements Listener {
 	public void onProxyPing(ProxyPingEvent event) {
 		
 		
-		System.out.println(event.getConnection().getListener().getHost());
-		System.out.println(event.getConnection().getAddress().getHostString());
+		
+		for (String string : event.getConnection().getListener().getForcedHosts().keySet()) {
+			
+			System.out.println(string);
+			
+		}	
+		
 		
 		String host = "host";
 		
-		Ping ping = this.manager.getPing(host);
+		//Ping ping = this.manager.getPing(host);
 		
 		
 	}
