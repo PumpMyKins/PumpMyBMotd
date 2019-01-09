@@ -28,7 +28,7 @@ public class ProxyPingListener implements Listener {
 		
 		ServerPing serverPing = event.getResponse();
 		
-		serverPing.setVersion(new Protocol("TEST", 4));
+		serverPing.setVersion(new Protocol("TEST", serverPing.getVersion().getProtocol()));
 		
 		event.setResponse(serverPing);				
 		
