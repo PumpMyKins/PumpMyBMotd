@@ -24,13 +24,21 @@ public class MotdReloadCommand extends Command {
 	@Override
 	public void execute(CommandSender sender, String[] args) {
 		
-		try {
-			manager.load();
-			sender.sendMessage(new ComponentBuilder("Motd reloaded succesfuly !").color(ChatColor.AQUA).create());
-		} catch (Exception e) {
+		if(sender.hasPermission("motd.reload")) {
 			
-			e.printStackTrace();
-			sender.sendMessage(new ComponentBuilder("Motd reloaded ERROR !").color(ChatColor.RED).create());
+			try {
+				manager.load();
+				sender.sendMessage(new ComponentBuilder("Motd reloaded succesfuly !").color(ChatColor.AQUA).create());
+			} catch (Exception e) {
+				
+				e.printStackTrace();
+				sender.sendMessage(new ComponentBuilder("Motd reloaded ERROR !").color(ChatColor.RED).create());
+				
+			}
+			
+		}else {
+			
+			sender.sendMessage(new ComponentBuilder("Motd reload : Not enough permission !!").color(ChatColor.RED).create());
 			
 		}
 
