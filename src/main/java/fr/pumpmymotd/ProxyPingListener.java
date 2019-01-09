@@ -21,6 +21,9 @@ public class ProxyPingListener implements Listener {
 	public void onProxyPing(ProxyPingEvent event) {
 		
 		
+		System.out.println(event.getConnection().getAddress().getHostName());
+		System.out.println(event.getConnection().getAddress().getHostString());
+		
 		
 	}
 	
