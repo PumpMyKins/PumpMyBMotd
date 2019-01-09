@@ -13,6 +13,10 @@ import net.md_5.bungee.config.YamlConfiguration;
 public class ConfigUtils {
 	
 	private MainMotd main;	
+	
+	public MainMotd getMain() {
+		return this.main;
+	}
 
 	public ConfigUtils(MainMotd main) {
 		this.main = main;
