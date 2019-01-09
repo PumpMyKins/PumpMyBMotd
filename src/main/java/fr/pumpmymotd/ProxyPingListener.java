@@ -2,6 +2,7 @@ package fr.pumpmymotd;
 
 import fr.pumpmymotd.motd.Ping;
 import fr.pumpmymotd.motd.PingManager;
+import net.md_5.bungee.api.AbstractReconnectHandler;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Listener;
 import net.md_5.bungee.event.EventHandler;
@@ -21,18 +22,7 @@ public class ProxyPingListener implements Listener {
 	@EventHandler
 	public void onProxyPing(ProxyPingEvent event) {
 		
-		
-		
-		for (String string : event.getConnection().getListener().getForcedHosts().keySet()) {
-			
-			System.out.println(string);
-			
-		}	
-		
-		
-		String host = "host";
-		
-		//Ping ping = this.manager.getPing(host);
+		System.out.println(AbstractReconnectHandler.getForcedHost(event.getConnection()));
 		
 		
 	}
