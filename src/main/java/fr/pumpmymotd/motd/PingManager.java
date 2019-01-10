@@ -141,6 +141,10 @@ public class PingManager {
 	public HashMap<String, Ping> getPings() {
 		return pings;
 	}
+	
+	public void clearPings() {
+		this.pings.clear();
+	}
 
 	public ConfigUtils getConfig() {
 		return config;
