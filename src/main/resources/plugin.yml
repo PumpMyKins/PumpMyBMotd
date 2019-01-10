@@ -2,3 +2,6 @@ name: PumpMyMotd
 main: fr.pumpmymotd.MainMotd
 version: 1.0.0
 author: Clem_Fern
+commands:
+  pmmotd-reload:
+    description: Reload motd command
