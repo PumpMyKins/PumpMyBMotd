@@ -82,7 +82,10 @@ public class PingManager {
 		builder.setLine1(config.getString("line1"));
 		builder.setLine2(config.getString("line2"));
 		
-		builder.setFavicon(new File(this.config.getDataFolder(),PingConstant.FAVICONS_FOLDER_NAME + File.separator + config.getString("favicon")));
+		BufferedImage img = ImageIO.read(new File(this.config.getDataFolder(),PingConstant.FAVICONS_FOLDER_NAME + File.separator + config.getString("favicon")));
+		Favicon fav = Favicon.create(img);
+		
+		builder.setFavicon(fav);
 			
 		return builder.build();
 		
