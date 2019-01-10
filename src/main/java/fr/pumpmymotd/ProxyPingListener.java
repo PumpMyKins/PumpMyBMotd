@@ -35,6 +35,7 @@ public class ProxyPingListener implements Listener {
 			return;
 		
 		String host = con.getVirtualHost().getHostString();
+		System.out.println(host);
 		Ping ping = this.manager.getPing(host);
 		
 		ServerPing serverPing = event.getResponse();
