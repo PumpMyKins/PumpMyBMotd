@@ -1,15 +1,15 @@
 package fr.pumpmymotd.motd;
 
-import java.io.File;
+import net.md_5.bungee.api.Favicon;
 
 public class Ping {
 
 	private String line1;
 	private String line2;
 	
-	private File favicon;
+	private Favicon favicon;
 	
-	public Ping(String line1, String line2, File favicon) {
+	public Ping(String line1, String line2, Favicon favicon) {
 		
 		this.line1 = line1;
 		this.line2 = line2;
@@ -25,7 +25,7 @@ public class Ping {
 		return line2;
 	}
 
-	public File getFavicon() {
+	public Favicon getFavicon() {
 		return favicon;
 	}
 
@@ -34,7 +34,7 @@ public class Ping {
 		private String line1;
 		private String line2;
 		
-		private File favicon;
+		private Favicon favicon;
 		
 		public PingBuilder setLine1(String line1) {
 			this.line1 = line1;
@@ -46,7 +46,7 @@ public class Ping {
 			return this;
 		}
 
-		public PingBuilder setFavicon(File favicon) {
+		public PingBuilder setFavicon(Favicon favicon) {
 			this.favicon = favicon;
 			return this;
 		}
