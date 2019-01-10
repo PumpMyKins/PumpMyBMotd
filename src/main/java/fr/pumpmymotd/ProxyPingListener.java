@@ -1,13 +1,7 @@
 package fr.pumpmymotd;
 
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
-
 import fr.pumpmymotd.motd.Ping;
 import fr.pumpmymotd.motd.PingManager;
-import net.md_5.bungee.api.Favicon;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.connection.PendingConnection;
@@ -28,7 +22,7 @@ public class ProxyPingListener implements Listener {
 	}
 	
 	@EventHandler
-	public void onProxyPing(ProxyPingEvent event) throws IOException {
+	public void onProxyPing(ProxyPingEvent event){
 		
 		PendingConnection con = event.getConnection();
 		if(con == null)
@@ -40,10 +34,9 @@ public class ProxyPingListener implements Listener {
 		
 		ServerPing serverPing = event.getResponse();
 		
-		serverPing.setDescriptionComponent(new TextComponent(ping.getLine1() + "\n" + ping.getLine2()));		
-		
-		BufferedImage img = ImageIO.read(ping.getFavicon());		
-		serverPing.setFavicon(Favicon.create(img));
+		serverPing.setDescriptionComponent(new TextComponent(ping.getLine1().replace("&", "§") + "\n" + ping.getLine2().replace("&", "§")));		
+				
+		serverPing.setFavicon(ping.getFavicon());
 		
 		event.setResponse(serverPing);				
 		
