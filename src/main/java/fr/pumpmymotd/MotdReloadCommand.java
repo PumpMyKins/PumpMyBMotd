@@ -27,6 +27,7 @@ public class MotdReloadCommand extends Command {
 		if(sender.hasPermission("motd.reload")) {
 			
 			try {
+				manager.clearPings();
 				manager.load();
 				sender.sendMessage(new ComponentBuilder("Motd reloaded succesfuly !").color(ChatColor.AQUA).create());
 			} catch (Exception e) {
