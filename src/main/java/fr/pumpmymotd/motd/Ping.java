@@ -33,11 +33,16 @@ public class Ping {
 		
 		private String line1;
 		private String line2;
-		
+		private boolean fml;		
 		private Favicon favicon;
 		
 		public PingBuilder setLine1(String line1) {
 			this.line1 = line1;
+			return this;
+		}
+		
+		public PingBuilder setFmlSupport(boolean fml) {
+			this.fml = fml;
 			return this;
 		}
 		
@@ -53,7 +58,7 @@ public class Ping {
 		
 		public Ping build() {
 			
-			return new Ping(this.line1,this.line2,this.favicon);
+			return new Ping(this.line1,this.line2,this.favicon,this.fml);
 			
 		}
 		
