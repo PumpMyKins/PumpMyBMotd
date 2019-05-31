@@ -19,11 +19,9 @@ public class AddMotdSubCommand implements ISubCommand,ISubTabCompleter{
 	
 	@Override
 	public void onSubCommand(Command exec, CommandSender sender, List<String> args) {
-
-		System.out.println(args.size());
 		
 		if(args.size() == 1) {
-			System.out.println(args.get(0));
+
 			if(this.onTabComplete(exec, sender, args).contains(args.get(0))) {
 				
 				try {

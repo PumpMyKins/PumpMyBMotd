@@ -155,8 +155,6 @@ public class PingManager {
 
 		Configuration config = this.config.getConfiguration(f);
 		PingBuilder builder = new PingBuilder();
-
-		System.out.println(f.getName());
 		
 		if(config.contains("line1") && !config.getString("line1").isEmpty()) {
 
