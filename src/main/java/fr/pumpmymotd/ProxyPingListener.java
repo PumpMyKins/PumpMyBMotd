@@ -1,17 +1,12 @@
 package fr.pumpmymotd;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import fr.pumpmymotd.motd.Ping;
 import fr.pumpmymotd.motd.PingManager;
 import net.md_5.bungee.api.Callback;
-import net.md_5.bungee.api.ProxyConfig;
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.ServerPing.ModInfo;
-import net.md_5.bungee.api.ServerPing.ModItem;
 import net.md_5.bungee.api.ServerPing.Protocol;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.config.ServerInfo;
