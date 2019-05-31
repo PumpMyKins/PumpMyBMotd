@@ -229,7 +229,7 @@ public class PingManager {
 					Favicon fav = Favicon.create(img);					
 					builder.setFavicon(fav);
 				} catch (Exception e) {
-					throw new Exception("UnFounded Favicon !!!!");
+					throw new Exception("Unfounded Favicon !!!!");
 				}
 				
 
