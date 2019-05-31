@@ -1,7 +1,5 @@
 package fr.pumpmymotd;
 
-import java.util.ArrayList;
-
 import fr.pumpmymotd.motd.Ping;
 import fr.pumpmymotd.motd.PingManager;
 import net.md_5.bungee.api.ServerPing;
@@ -31,15 +29,14 @@ public class ProxyPingListener implements Listener {
 			return;
 		
 		String host = con.getVirtualHost().getHostString();
-		System.out.println(host);
 		Ping ping = this.manager.getPing(host);
-		
 		ServerPing serverPing = event.getResponse();
 		
 		if(serverPing == null) return;
 		
 		serverPing.setDescriptionComponent(new TextComponent(ping.getLine1().replace("&", "§") + "\n" + ping.getLine2().replace("&", "§")));		
-		serverPing.getModinfo().setModList(new ArrayList<ServerPing.ModItem>());	
+
+		
 		
 		if(ping.getFavicon() != null) {
 			
