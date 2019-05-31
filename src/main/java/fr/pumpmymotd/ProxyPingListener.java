@@ -36,9 +36,16 @@ public class ProxyPingListener implements Listener {
 		
 		ServerPing serverPing = event.getResponse();
 		
+		if(serverPing == null) return;
+		
 		serverPing.setDescriptionComponent(new TextComponent(ping.getLine1().replace("&", "§") + "\n" + ping.getLine2().replace("&", "§")));		
-		serverPing.getModinfo().setModList(new ArrayList<ServerPing.ModItem>());				
-		serverPing.setFavicon(ping.getFavicon());
+		serverPing.getModinfo().setModList(new ArrayList<ServerPing.ModItem>());	
+		
+		if(ping.getFavicon() != null) {
+			
+			serverPing.setFavicon(ping.getFavicon());
+			
+		}
 		
 		event.setResponse(serverPing);				
 		

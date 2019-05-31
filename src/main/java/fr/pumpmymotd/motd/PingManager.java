@@ -122,6 +122,8 @@ public class PingManager {
 		Configuration config = this.config.getConfiguration(f);
 		PingBuilder builder = new PingBuilder();
 
+		System.out.println(f.getName());
+		
 		if(config.contains("line1") && !config.getString("line1").isEmpty()) {
 
 			String line1 = config.getString("line1");
@@ -169,7 +171,7 @@ public class PingManager {
 		if(config.contains("favicon") && !config.getString("favicon").isEmpty()) {
 
 			String faviconName = config.getString("favicon");
-			if(faviconName.contentEquals("default")) {				
+			if(faviconName.equals("default") || faviconName.equals("None")) {				
 				if(f.getName().equals("default.yml")) {
 					throw new Exception("Invalide Value for default configuration file !");
 				}
@@ -178,9 +180,14 @@ public class PingManager {
 
 			}else {
 
-				BufferedImage img = ImageIO.read(new File(this.config.getDataFolder(),PingConstant.FAVICONS_FOLDER_NAME + File.separator + config.getString("favicon")));
-				Favicon fav = Favicon.create(img);					
-				builder.setFavicon(fav);
+				try {
+					BufferedImage img = ImageIO.read(new File(this.config.getDataFolder(),PingConstant.FAVICONS_FOLDER_NAME + File.separator + config.getString("favicon")));
+					Favicon fav = Favicon.create(img);					
+					builder.setFavicon(fav);
+				} catch (Exception e) {
+					throw new Exception("UnFounded Favicon !!!!");
+				}
+				
 
 			}			
 
