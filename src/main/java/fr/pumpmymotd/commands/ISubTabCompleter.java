@@ -6,7 +6,7 @@ import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.plugin.Command;
 
 public interface ISubTabCompleter {
-
-	public List<String> onTabComplete(Command command, CommandSender sender, String[] args);
+	
+	public List<String> onTabComplete(Command command, CommandSender sender, List<String> args);
 	
 }

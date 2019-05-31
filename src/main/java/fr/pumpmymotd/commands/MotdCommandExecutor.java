@@ -150,7 +150,7 @@ public class MotdCommandExecutor extends Command implements TabExecutor{
 
 				if(subcmd.getSubCommand().equalsIgnoreCase(subcommand) & subcmd.getSubCommandExecutor() instanceof ISubTabCompleter) {
 
-					return ((ISubTabCompleter) subcmd.getSubCommandExecutor()).onTabComplete(this, sender, args);
+					return ((ISubTabCompleter) subcmd.getSubCommandExecutor()).onTabComplete(this, sender, getArgs(args));
 
 				}
 
