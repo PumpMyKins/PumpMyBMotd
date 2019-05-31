@@ -25,7 +25,7 @@ public class AddMotdSubCommand implements ISubCommand,ISubTabCompleter{
 			if(this.onTabComplete(exec, sender, args).contains(args.get(0))) {
 				
 				try {
-					this.manager.initMotdFileConfiguration(new File(this.manager.getConfig().getDataFolder(),args.get(0)));
+					this.manager.initMotdFileConfiguration(new File(this.manager.getConfig().getDataFolder(),args.get(0) + ".yml"));
 					sender.sendMessage(new TextComponent("§bConfiguration file successfully created !"));
 				} catch (Exception e) {
 					e.printStackTrace();
