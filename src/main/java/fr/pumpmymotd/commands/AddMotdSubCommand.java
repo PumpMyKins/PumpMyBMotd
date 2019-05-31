@@ -1,9 +1,12 @@
 package fr.pumpmymotd.commands;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 import fr.pumpmymotd.motd.PingManager;
+import fr.pumpmymotd.motd.PingManager.PingConstant;
+import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Command;
@@ -21,18 +24,26 @@ public class AddMotdSubCommand implements ISubCommand,ISubTabCompleter{
 
 		System.out.println(args.size());
 		
-		if(args.size() == 2) {
-			System.out.println(args.get(1));
-			System.out.println(args.get(2));
-			if(!this.onTabComplete(exec, sender, (String[]) args.toArray()).contains(args.get(1))) {
+		if(args.size() == 1) {
+			System.out.println(args.get(0));
+			if(!this.onTabComplete(exec, sender, (String[]) args.toArray()).contains(args.get(0))) {
 				
+				try {
+					this.manager.initMotdFileConfiguration(new File(this.manager.getConfig().getDataFolder(),args.get(0)));
+					sender.sendMessage(new TextComponent("§bConfiguration file successfully created !"));
+				} catch (Exception e) {
+					e.printStackTrace();
+					sender.sendMessage(new TextComponent("§cError on file creation !"));
+				}
 				
+			}else {
+				
+				sender.sendMessage(new TextComponent("§cUnknow Forced Host !"));
 				
 			}
 			
 		}else{
-			sender.sendMessage(new TextComponent("§cInvalid syntax !"));
-			
+			sender.sendMessage(new TextComponent("§cInvalid syntax !"));			
 		}
 		
 	}

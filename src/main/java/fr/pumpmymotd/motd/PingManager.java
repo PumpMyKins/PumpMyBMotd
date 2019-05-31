@@ -256,7 +256,7 @@ public class PingManager {
 
 	}
 
-	private void initMotdFileConfiguration(File f) throws Exception {
+	public void initMotdFileConfiguration(File f) throws Exception {
 
 		Configuration conf = YamlConfiguration.getProvider(YamlConfiguration.class).load(f);
 		String value = "default";
