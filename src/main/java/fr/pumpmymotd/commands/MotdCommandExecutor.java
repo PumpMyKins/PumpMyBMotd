@@ -45,6 +45,10 @@ public class MotdCommandExecutor extends Command implements TabExecutor{
 		return subCommandList;
 	}
 
+	public MainMotd getMain() {
+		return main;
+	}
+
 	private static List<String> getArgs(String[] a) {
 
 		List<String> l = new ArrayList<>();
