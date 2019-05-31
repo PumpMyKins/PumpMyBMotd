@@ -200,13 +200,13 @@ public class PingManager {
 
 		}
 		
-		if(!config.contains("check.disponibility")) {
+		if(config.contains("check.disponibility")) {
 
 			builder.setCheckDisponibility(config.getBoolean("check.disponibility"));
 
 		}
 		
-		if(!config.contains("check.fml")) {
+		if(config.contains("check.fml")) {
 
 			builder.setFmlSupport(config.getBoolean("check.fml"));
 
