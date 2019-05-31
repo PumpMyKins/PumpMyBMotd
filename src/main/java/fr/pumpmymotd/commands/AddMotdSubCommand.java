@@ -22,7 +22,7 @@ public class AddMotdSubCommand implements ISubCommand,ISubTabCompleter{
 		
 		if(args.size() == 1) {
 
-			if(this.onTabComplete(exec, sender, args).contains(args.get(0)) && !this.manager.getForcedHost().contains(args.get(0))) {
+			if(this.onTabComplete(exec, sender, args).contains(args.get(0)) && !this.manager.getPings().containsKey(args.get(0))) {
 				
 				try {
 					this.manager.initMotdFileConfiguration(new File(this.manager.getConfig().getDataFolder(),args.get(0) + ".yml"));
