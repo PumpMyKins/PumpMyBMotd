@@ -87,7 +87,11 @@ public class PingManager {
 			this.defaultPing = this.getPingFromFile(new File(this.config.getDataFolder(),PingConstant.DEFAULT_MOTD_FILE_NAME));
 		} catch (Exception e) {
 			e.printStackTrace();
-			return;
+			PingBuilder ping = new PingBuilder();
+			ping.setLine1("None");
+			ping.setLine2("None");
+			ping.setFavicon(null);
+			this.defaultPing = ping.build();
 		}
 
 
