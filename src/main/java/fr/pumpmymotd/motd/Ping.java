@@ -7,18 +7,25 @@ public class Ping {
 	private String line1;
 	private String line2;
 	
+	private boolean fmlSupport;
+	
 	private Favicon favicon;
 	
-	public Ping(String line1, String line2, Favicon favicon) {
+	private Ping(String line1, String line2, Favicon favicon, boolean fml) {
 		
 		this.line1 = line1;
 		this.line2 = line2;
 		this.favicon = favicon;
+		this.fmlSupport = fml;
 		
 	}
 
 	public String getLine1() {
 		return line1;
+	}
+	
+	public boolean hasFmlSupport() {
+		return this.fmlSupport;
 	}
 
 	public String getLine2() {
