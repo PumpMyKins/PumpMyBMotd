@@ -3,5 +3,5 @@ main: fr.pumpmymotd.MainMotd
 version: 1.0.0
 author: Clem_Fern
 commands:
-  motd-reload:
-    description: Reload motd command
+  pumpmymotd:
+    description: PumpMyMotd command
