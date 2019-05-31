@@ -6,7 +6,7 @@ import fr.pumpmymotd.motd.PingManager;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.plugin.Command;
 
-public class AddMotdSubCommand implements ISubCommand{
+public class AddMotdSubCommand implements ISubCommand,ISubTabCompleter{
 	
 	private PingManager manager;
 	
@@ -19,6 +19,12 @@ public class AddMotdSubCommand implements ISubCommand{
 
 		
 		
+	}
+
+	@Override
+	public List<String> onTabComplete(Command command, CommandSender sender, String[] args) {
+		// TODO Auto-generated method stub
+		return null;
 	}	
 
 }

@@ -148,9 +148,9 @@ public class MotdCommandExecutor extends Command implements TabExecutor{
 
 			for (SubCommandData subcmd : this.subCommandList) {
 
-				if(subcmd.getSubCommand().equalsIgnoreCase(subcommand) & subcmd.getSubCommandExecutor() instanceof SubTabCompleter) {
+				if(subcmd.getSubCommand().equalsIgnoreCase(subcommand) & subcmd.getSubCommandExecutor() instanceof ISubTabCompleter) {
 
-					return ((SubTabCompleter) subcmd.getSubCommandExecutor()).onTabComplete(this, sender, args);
+					return ((ISubTabCompleter) subcmd.getSubCommandExecutor()).onTabComplete(this, sender, args);
 
 				}
 
