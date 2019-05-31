@@ -1,9 +1,20 @@
 package fr.pumpmymotd;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import fr.pumpmymotd.motd.Ping;
 import fr.pumpmymotd.motd.PingManager;
+import net.md_5.bungee.api.Callback;
+import net.md_5.bungee.api.ProxyConfig;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.ServerPing;
+import net.md_5.bungee.api.ServerPing.ModInfo;
+import net.md_5.bungee.api.ServerPing.ModItem;
+import net.md_5.bungee.api.ServerPing.Protocol;
 import net.md_5.bungee.api.chat.TextComponent;
+import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.connection.PendingConnection;
 import net.md_5.bungee.api.event.ProxyPingEvent;
 import net.md_5.bungee.api.plugin.Listener;
@@ -36,15 +47,63 @@ public class ProxyPingListener implements Listener {
 		
 		serverPing.setDescriptionComponent(new TextComponent(ping.getLine1().replace("&", "§") + "\n" + ping.getLine2().replace("&", "§")));		
 
-		
-		
 		if(ping.getFavicon() != null) {
 			
 			serverPing.setFavicon(ping.getFavicon());
 			
 		}
 		
-		event.setResponse(serverPing);				
+		if(ping.hasFmlSupport() || ping.hasCheckDispo()) {
+			
+			ServerInfo serverInfo = this.manager.getServerByForcedHost(host);
+			if(serverInfo != null) {
+				
+				serverInfo.ping(new Callback<ServerPing>() {
+					
+					@Override
+					public void done(ServerPing result, Throwable error) {
+						
+						if(ping.hasFmlSupport()) {
+							
+							ModInfo modInfo = serverPing.getModinfo();
+							modInfo.setType("FML");
+							
+							if(result == null || error != null) {
+								
+								error.printStackTrace();
+								modInfo.setModList(new ArrayList<>());
+								event.setResponse(serverPing);
+								return;
+								
+							}		
+							
+							modInfo.setModList(result.getModinfo().getModList());
+							
+						}
+						
+						if(ping.hasCheckDispo()) {
+							
+							if(result == null || error != null) {
+								
+								serverPing.setVersion(new Protocol("Server Rebooting", -1));
+								
+							}
+							
+						}
+						
+						event.setResponse(serverPing);
+						
+					}
+				});
+				
+			}
+			
+		}else {
+			
+			event.setResponse(serverPing);	
+			
+		}
+					
 		
 	}
 	
