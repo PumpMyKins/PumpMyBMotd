@@ -1,5 +1,6 @@
 package fr.pumpmymotd;
 
+import java.net.InetSocketAddress;
 import java.util.ArrayList;
 
 import fr.pumpmymotd.motd.Ping;
@@ -34,7 +35,9 @@ public class ProxyPingListener implements Listener {
 		if(con == null)
 			return;
 		
-		String host = con.getVirtualHost().getHostString();
+		InetSocketAddress inet = con.getVirtualHost();
+		if(inet == null) return;
+		String host = inet.getHostString();
 		Ping ping = this.manager.getPing(host);
 		ServerPing serverPing = event.getResponse();
 		
