@@ -5,6 +5,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
@@ -12,6 +13,7 @@ import fr.pumpmymotd.config.ConfigUtils;
 import fr.pumpmymotd.motd.Ping.PingBuilder;
 import net.md_5.bungee.api.Favicon;
 import net.md_5.bungee.api.config.ListenerInfo;
+import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.YamlConfiguration;
 
@@ -70,6 +72,32 @@ public class PingManager {
 
 
 	}
+	
+	@SuppressWarnings("deprecation")
+	public ServerInfo getServerByForcedHost(String host){
+
+		if(host == null || host.isEmpty()) return null;
+		
+		for (ListenerInfo listener : this.config.getMain().getProxy().getConfig().getListeners()) {
+
+			for (Entry<String, String> forcedHost : listener.getForcedHosts().entrySet()) {
+
+				if(forcedHost.getKey().equalsIgnoreCase(host)) {
+					
+					return this.config.getMain().getProxy().getServerInfo(forcedHost.getValue());
+					
+				}
+
+			}
+
+		}
+
+		return null;
+
+
+	}
+	
+	
 
 	public void load() {
 
@@ -91,6 +119,8 @@ public class PingManager {
 			ping.setLine1("None");
 			ping.setLine2("None");
 			ping.setFavicon(null);
+			ping.setFmlSupport(false);
+			ping.setCheckDisponibility(false);
 			this.defaultPing = ping.build();
 		}
 
@@ -171,6 +201,18 @@ public class PingManager {
 			builder.setLine2(this.defaultPing.getLine2());
 
 		}
+		
+		if(!config.contains("check.disponibility")) {
+
+			builder.setCheckDisponibility(config.getBoolean("check.disponibility"));
+
+		}
+		
+		if(!config.contains("check.fml")) {
+
+			builder.setFmlSupport(config.getBoolean("check.fml"));
+
+		}
 
 		if(config.contains("favicon") && !config.getString("favicon").isEmpty()) {
 
@@ -240,11 +282,17 @@ public class PingManager {
 
 		}
 
-		if(!conf.contains("fml")) {
+		if(!conf.contains("check.disponibility")) {
 
-			conf.set("fml", false);
+			conf.set("check.disponibility", false);
 
-		}		
+		}
+		
+		if(!conf.contains("check.fml")) {
+
+			conf.set("check.fml", false);
+
+		}	
 
 		YamlConfiguration.getProvider(YamlConfiguration.class).save(conf, f);
 
