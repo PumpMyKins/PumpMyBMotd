@@ -23,7 +23,7 @@ public class Ping {
 	}
 
 	public boolean hasCheckDispo() {
-		return checkDispo;
+		return this.checkDispo;
 	}
 
 	public String getLine1() {
@@ -60,8 +60,8 @@ public class Ping {
 			return this;
 		}
 		
-		public PingBuilder setCheckDisponibility(boolean fml) {
-			this.fml = fml;
+		public PingBuilder setCheckDisponibility(boolean dispo) {
+			this.dispo = dispo;
 			return this;
 		}
 		
