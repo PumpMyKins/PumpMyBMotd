@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fr.pumpmymotd.motd.PingManager;
-import fr.pumpmymotd.motd.PingManager.PingConstant;
-import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Command;
@@ -26,7 +24,7 @@ public class AddMotdSubCommand implements ISubCommand,ISubTabCompleter{
 		
 		if(args.size() == 1) {
 			System.out.println(args.get(0));
-			if(!this.onTabComplete(exec, sender, (String[]) args.toArray()).contains(args.get(0))) {
+			if(!this.onTabComplete(exec, sender, args).contains(args.get(0))) {
 				
 				try {
 					this.manager.initMotdFileConfiguration(new File(this.manager.getConfig().getDataFolder(),args.get(0)));
@@ -49,7 +47,7 @@ public class AddMotdSubCommand implements ISubCommand,ISubTabCompleter{
 	}
 
 	@Override
-	public List<String> onTabComplete(Command command, CommandSender sender, String[] args) {
+	public List<String> onTabComplete(Command command, CommandSender sender, List<String> args) {
 		
 		List<String> list = new ArrayList<String>();
 		
