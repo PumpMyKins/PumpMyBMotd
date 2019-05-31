@@ -256,6 +256,7 @@ public class PingManager {
 
 	public void initMotdFileConfiguration(File f) throws Exception {
 
+		f.createNewFile();
 		Configuration conf = YamlConfiguration.getProvider(YamlConfiguration.class).load(f);
 		String value = "default";
 		if(f.getName().equals("default.yml")) {
