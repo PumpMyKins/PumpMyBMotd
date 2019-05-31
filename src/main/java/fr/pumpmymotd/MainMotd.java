@@ -1,11 +1,11 @@
 package fr.pumpmymotd;
 
+import fr.pumpmymotd.commands.AddMotdSubCommand;
 import fr.pumpmymotd.commands.HelpMotdSubCommand;
 import fr.pumpmymotd.commands.MotdCommandExecutor;
 import fr.pumpmymotd.commands.ReloadMotdSubCommand;
 import fr.pumpmymotd.config.ConfigUtils;
 import fr.pumpmymotd.motd.PingManager;
-import net.md_5.bungee.api.plugin.Command;
 import net.md_5.bungee.api.plugin.Plugin;
 
 public class MainMotd extends Plugin{
@@ -37,7 +37,8 @@ public class MainMotd extends Plugin{
 		MotdCommandExecutor motdCommandExec = new MotdCommandExecutor(this);
 		
 		motdCommandExec.addSubCommand("help", new HelpMotdSubCommand());
-		motdCommandExec.addSubCommand("reload", new ReloadMotdSubCommand(this.manager));
+		motdCommandExec.addSubCommand("reload", "pumpmymotd.command.reload" , new ReloadMotdSubCommand(this.manager));
+		motdCommandExec.addSubCommand("add", "pumpmymotd.command.add" , new AddMotdSubCommand(this.manager));
 		
 		
 		getProxy().getPluginManager().registerCommand(this, motdCommandExec);
