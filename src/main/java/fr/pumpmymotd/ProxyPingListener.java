@@ -1,9 +1,10 @@
 package fr.pumpmymotd;
 
 import java.net.InetSocketAddress;
+import java.util.ArrayList;
+
 import fr.pumpmymotd.motd.Ping;
 import fr.pumpmymotd.motd.PingManager;
-import net.md_5.bungee.api.Callback;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.ServerPing.ModInfo;
 import net.md_5.bungee.api.chat.TextComponent;
@@ -45,7 +46,8 @@ public class ProxyPingListener implements Listener {
 
 		ModInfo modInfo = newServerPing.getModinfo();
 		if(ping.hasFmlSupport()) {
-			modInfo.setType("FML");				
+			modInfo.setType("FML");
+			modInfo.setModList(new ArrayList<ServerPing.ModItem>());
 		}else {
 			modInfo.setType("VANILLA");
 		}
