@@ -1,10 +1,10 @@
-package fr.pumpmymotd;
+package fr.pumpmybmotd;
 
 import java.net.InetSocketAddress;
 import java.util.ArrayList;
 
-import fr.pumpmymotd.motd.Ping;
-import fr.pumpmymotd.motd.PingManager;
+import fr.pumpmybmotd.motd.Ping;
+import fr.pumpmybmotd.motd.PingManager;
 import net.md_5.bungee.api.ServerPing;
 import net.md_5.bungee.api.ServerPing.ModInfo;
 import net.md_5.bungee.api.chat.TextComponent;

@@ -1,4 +1,4 @@
-package fr.pumpmymotd.motd;
+package fr.pumpmybmotd.motd;
 
 import net.md_5.bungee.api.Favicon;
 

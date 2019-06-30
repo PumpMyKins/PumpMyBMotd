@@ -1,4 +1,4 @@
-package fr.pumpmymotd.commands;
+package fr.pumpmybmotd.commands;
 
 import java.util.List;
 

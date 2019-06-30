@@ -1,11 +1,11 @@
-package fr.pumpmymotd.config;
+package fr.pumpmybmotd.config;
 
 import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.file.Files;
 
-import fr.pumpmymotd.MainMotd;
+import fr.pumpmybmotd.MainMotd;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.ConfigurationProvider;
 import net.md_5.bungee.config.YamlConfiguration;

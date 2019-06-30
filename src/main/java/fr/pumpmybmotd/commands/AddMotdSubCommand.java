@@ -1,10 +1,10 @@
-package fr.pumpmymotd.commands;
+package fr.pumpmybmotd.commands;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.pumpmymotd.motd.PingManager;
+import fr.pumpmybmotd.motd.PingManager;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.TextComponent;
 import net.md_5.bungee.api.plugin.Command;

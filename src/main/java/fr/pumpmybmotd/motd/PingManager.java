@@ -1,4 +1,4 @@
-package fr.pumpmymotd.motd;
+package fr.pumpmybmotd.motd;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -9,8 +9,8 @@ import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
-import fr.pumpmymotd.config.ConfigUtils;
-import fr.pumpmymotd.motd.Ping.PingBuilder;
+import fr.pumpmybmotd.config.ConfigUtils;
+import fr.pumpmybmotd.motd.Ping.PingBuilder;
 import net.md_5.bungee.api.Favicon;
 import net.md_5.bungee.api.config.ListenerInfo;
 import net.md_5.bungee.api.config.ServerInfo;

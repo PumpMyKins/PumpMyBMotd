@@ -1,8 +1,8 @@
-package fr.pumpmymotd.commands;
+package fr.pumpmybmotd.commands;
 
 import java.util.List;
 
-import fr.pumpmymotd.motd.PingManager;
+import fr.pumpmybmotd.motd.PingManager;
 import net.md_5.bungee.api.ChatColor;
 import net.md_5.bungee.api.CommandSender;
 import net.md_5.bungee.api.chat.ComponentBuilder;

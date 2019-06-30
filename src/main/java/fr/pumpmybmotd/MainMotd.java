@@ -1,11 +1,11 @@
-package fr.pumpmymotd;
+package fr.pumpmybmotd;
 
-import fr.pumpmymotd.commands.AddMotdSubCommand;
-import fr.pumpmymotd.commands.HelpMotdSubCommand;
-import fr.pumpmymotd.commands.MotdCommandExecutor;
-import fr.pumpmymotd.commands.ReloadMotdSubCommand;
-import fr.pumpmymotd.config.ConfigUtils;
-import fr.pumpmymotd.motd.PingManager;
+import fr.pumpmybmotd.commands.AddMotdSubCommand;
+import fr.pumpmybmotd.commands.HelpMotdSubCommand;
+import fr.pumpmybmotd.commands.MotdCommandExecutor;
+import fr.pumpmybmotd.commands.ReloadMotdSubCommand;
+import fr.pumpmybmotd.config.ConfigUtils;
+import fr.pumpmybmotd.motd.PingManager;
 import net.md_5.bungee.api.plugin.Plugin;
 
 public class MainMotd extends Plugin{
