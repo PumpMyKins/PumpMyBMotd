@@ -1,7 +1,7 @@
-name: PumpMyMotd
+name: PumpMyBMotd
 main: fr.pumpmymotd.MainMotd
-version: 1.0.0
+version: 2.0
 author: Clem_Fern
 commands:
   pumpmymotd:
-    description: PumpMyMotd command
+    description: PumpMyBMotd command
