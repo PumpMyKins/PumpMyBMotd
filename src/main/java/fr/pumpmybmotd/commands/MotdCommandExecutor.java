@@ -24,7 +24,7 @@ public class MotdCommandExecutor extends Command implements TabExecutor{
 
 	public MotdCommandExecutor(MainMotd main) {
 		
-		this("pumpmymotd");
+		this("pumpmybmotd");
 		this.main = main;
 		
 	}
