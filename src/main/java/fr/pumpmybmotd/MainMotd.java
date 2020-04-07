@@ -1,7 +1,9 @@
 package fr.pumpmybmotd;
 
 import fr.pumpmybmotd.commands.AddMotdSubCommand;
+import fr.pumpmybmotd.commands.GetMotdSubCommand;
 import fr.pumpmybmotd.commands.HelpMotdSubCommand;
+import fr.pumpmybmotd.commands.ListMotdSubCommand;
 import fr.pumpmybmotd.commands.MotdCommandExecutor;
 import fr.pumpmybmotd.commands.ReloadMotdSubCommand;
 import fr.pumpmybmotd.config.ConfigUtils;
@@ -39,6 +41,8 @@ public class MainMotd extends Plugin{
 		motdCommandExec.addSubCommand("help", new HelpMotdSubCommand());
 		motdCommandExec.addSubCommand("reload", "pumpmymotd.command.reload" , new ReloadMotdSubCommand(this.manager));
 		motdCommandExec.addSubCommand("add", "pumpmymotd.command.add" , new AddMotdSubCommand(this.manager));
+		motdCommandExec.addSubCommand("list", "pumpmymotd.command.list", new ListMotdSubCommand(this.manager));
+		motdCommandExec.addSubCommand("get", "pumpmymotd.command.get", new GetMotdSubCommand(this.manager));
 		
 		
 		getProxy().getPluginManager().registerCommand(this, motdCommandExec);
