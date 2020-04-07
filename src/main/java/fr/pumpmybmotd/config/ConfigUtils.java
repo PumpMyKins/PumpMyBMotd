@@ -28,6 +28,7 @@ public class ConfigUtils {
 			main.getDataFolder().mkdir();
 		}
 		
+		
 	}
 	
 	public File initAndGetFile(String fileName) {
@@ -35,15 +36,18 @@ public class ConfigUtils {
 		File file = new File(this.main.getDataFolder(),fileName);
 		
 		if(!file.exists()) {
-			try (InputStream in = this.main.getResourceAsStream(fileName)){
+			try (InputStream in = this.getResourceAsStream(fileName)){
 				Files.copy(in, file.toPath());
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
 		
 		return file;
+	}
+	
+	public InputStream getResourceAsStream(String name) {
+		return this.main.getResourceAsStream(name);
 	}
 	
 	public File getDataFolder() {

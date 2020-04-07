@@ -2,6 +2,9 @@ package fr.pumpmybmotd.motd;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -9,6 +12,7 @@ import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
+import fr.pumpmybmotd.MainMotd;
 import fr.pumpmybmotd.config.ConfigUtils;
 import fr.pumpmybmotd.motd.Ping.PingBuilder;
 import net.md_5.bungee.api.Favicon;
@@ -99,6 +103,19 @@ public class PingManager {
 
 	}
 	
+	private void initDefaultFavicon() {
+		File file = new File(this.config.getDataFolder(),PingConstant.FAVICONS_FOLDER_NAME + File.separatorChar + "pmk_fav.png");
+		
+		if(file.exists())
+			return;
+		
+		InputStream stream = this.config.getResourceAsStream(PingConstant.FAVICONS_FOLDER_NAME + File.separatorChar + "pmk_fav.png");
+		try {
+			Files.copy(stream, file.toPath());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}			
+	}
 	
 
 	public void load() {
@@ -113,6 +130,8 @@ public class PingManager {
 			return;
 		}		
 
+		this.initDefaultFavicon();
+		
 		try {
 			this.defaultPing = this.getPingFromFile(new File(this.config.getDataFolder(),PingConstant.DEFAULT_MOTD_FILE_NAME));
 		} catch (Exception e) {
@@ -281,7 +300,7 @@ public class PingManager {
 
 		if(!conf.contains("favicon")) {
 
-			conf.set("favicon", null);
+			conf.set("favicon", "pmk_fav.png");
 
 		}
 
