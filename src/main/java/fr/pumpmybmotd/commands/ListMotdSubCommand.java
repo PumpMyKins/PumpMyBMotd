@@ -19,7 +19,7 @@ public class ListMotdSubCommand implements ISubCommand,ISubTabCompleter{
 	@Override
 	public void onSubCommand(Command exec, CommandSender sender, List<String> args) {
 
-		if(args.size() != 0) {
+		if(args.size() == 0) {
 
 			sender.sendMessage(new TextComponent("§bConfigured forced-host motd :"));
 			sender.sendMessage(new TextComponent("§b\t - default"));
