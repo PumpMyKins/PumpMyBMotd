@@ -9,14 +9,16 @@ public class Ping {
 	
 	private boolean fmlSupport;
 	
+	private String faviconName;
 	private Favicon favicon;
 	
 	private int maxPlayers;
 	
-	private Ping(String line1, String line2, Favicon favicon, boolean fml, int max) {
+	private Ping(String line1, String line2,String faviconName, Favicon favicon, boolean fml, int max) {
 		
 		this.line1 = line1;
 		this.line2 = line2;
+		this.faviconName = faviconName;
 		this.favicon = favicon;
 		this.fmlSupport = fml;
 		this.maxPlayers = max;
@@ -35,6 +37,10 @@ public class Ping {
 		return line2;
 	}
 
+	public String getFaviconName() {
+		return faviconName;
+	}
+	
 	public Favicon getFavicon() {
 		return favicon;
 	}
@@ -47,7 +53,8 @@ public class Ping {
 		
 		private String line1;
 		private String line2;
-		private boolean fml;	
+		private boolean fml;
+		private String favname;
 		private Favicon favicon;
 		private int max;
 		
@@ -65,6 +72,11 @@ public class Ping {
 			this.line2 = line2;
 			return this;
 		}
+		
+		public PingBuilder setFaviconName(String favname) {
+			this.favname = favname;
+			return this;
+		}
 
 		public PingBuilder setFavicon(Favicon favicon) {
 			this.favicon = favicon;
@@ -78,7 +90,7 @@ public class Ping {
 		
 		public Ping build() {
 			
-			return new Ping(this.line1,this.line2,this.favicon,this.fml,this.max);
+			return new Ping(this.line1,this.line2,this.favname,this.favicon,this.fml,this.max);
 			
 		}
 		
