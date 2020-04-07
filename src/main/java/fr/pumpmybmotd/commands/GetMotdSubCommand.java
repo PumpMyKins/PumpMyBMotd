@@ -22,7 +22,7 @@ public class GetMotdSubCommand implements ISubCommand,ISubTabCompleter{
 
 		if(args.size() == 1) {
 
-			if(this.onTabComplete(exec, sender, args).contains(args.get(0)) && !this.manager.getPings().containsKey(args.get(0))) {
+			if(this.onTabComplete(exec, sender, args).contains(args.get(0)) ) {
 
 				String forcedHost = args.get(0);
 				Ping ping;
@@ -60,7 +60,7 @@ public class GetMotdSubCommand implements ISubCommand,ISubTabCompleter{
 
 		for (String string : this.manager.getForcedHost()) {
 
-			if(!this.manager.getPings().containsKey(string)) {
+			if(this.manager.getPings().containsKey(string)) {
 
 				list.add(string);
 
