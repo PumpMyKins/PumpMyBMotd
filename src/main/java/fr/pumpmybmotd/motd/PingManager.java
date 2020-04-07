@@ -244,13 +244,15 @@ public class PingManager {
 				}
 
 				builder.setFavicon(this.defaultPing.getFavicon());
+				builder.setFaviconName(this.defaultPing.getFaviconName());
 
 			}else {
 
 				try {
-					BufferedImage img = ImageIO.read(new File(this.config.getDataFolder(),PingConstant.FAVICONS_FOLDER_NAME + File.separator + config.getString("favicon")));
+					BufferedImage img = ImageIO.read(new File(this.config.getDataFolder(),PingConstant.FAVICONS_FOLDER_NAME + File.separator + faviconName));
 					Favicon fav = Favicon.create(img);					
 					builder.setFavicon(fav);
+					builder.setFaviconName(faviconName);
 				} catch (Exception e) {
 					throw new Exception("Unfounded Favicon !!!!");
 				}
@@ -261,6 +263,7 @@ public class PingManager {
 		}else {
 
 			builder.setFavicon(this.defaultPing.getFavicon());
+			builder.setFaviconName(this.defaultPing.getFaviconName());
 
 		}
 
