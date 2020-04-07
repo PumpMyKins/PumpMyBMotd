@@ -43,6 +43,7 @@ public class ProxyPingListener implements Listener {
 
 		newServerPing.setVersion(serverPing.getVersion());
 		newServerPing.setPlayers(serverPing.getPlayers());
+		newServerPing.getPlayers().setMax(ping.getMaxPlayers());
 
 		ModInfo modInfo = newServerPing.getModinfo();
 		if(ping.hasFmlSupport()) {

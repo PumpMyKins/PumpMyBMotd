@@ -12,8 +12,10 @@ import javax.imageio.ImageIO;
 import fr.pumpmybmotd.config.ConfigUtils;
 import fr.pumpmybmotd.motd.Ping.PingBuilder;
 import net.md_5.bungee.api.Favicon;
+import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.config.ListenerInfo;
 import net.md_5.bungee.api.config.ServerInfo;
+import net.md_5.bungee.api.scheduler.GroupedThreadFactory.BungeeGroup;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.YamlConfiguration;
 
@@ -120,7 +122,7 @@ public class PingManager {
 			ping.setLine2("None");
 			ping.setFavicon(null);
 			ping.setFmlSupport(false);
-			ping.setCheckDisponibility(false);
+			ping.setMaxPlayer(1);
 			this.defaultPing = ping.build();
 		}
 
@@ -200,15 +202,15 @@ public class PingManager {
 
 		}
 		
-		if(config.contains("check.disponibility")) {
-
-			builder.setCheckDisponibility(config.getBoolean("check.disponibility"));
-
-		}
-		
 		if(config.contains("check.fml")) {
 
 			builder.setFmlSupport(config.getBoolean("check.fml"));
+
+		}
+		
+		if(config.contains("players.max")) {
+
+			builder.setMaxPlayer(config.getInt("players.max"));
 
 		}
 
@@ -260,7 +262,7 @@ public class PingManager {
 		Configuration conf = YamlConfiguration.getProvider(YamlConfiguration.class).load(f);
 		String value = "default";
 		if(f.getName().equals("default.yml")) {
-			value = "None";
+			value = "PumpMyBMotd :)";
 		}
 
 		if(!conf.contains("line1")) {
@@ -277,13 +279,13 @@ public class PingManager {
 
 		if(!conf.contains("favicon")) {
 
-			conf.set("favicon", value);
+			conf.set("favicon", null);
 
 		}
 
-		if(!conf.contains("check.disponibility")) {
+		if(!conf.contains("players.max")) {
 
-			conf.set("check.disponibility", false);
+			conf.set("players.max", 1);
 
 		}
 		

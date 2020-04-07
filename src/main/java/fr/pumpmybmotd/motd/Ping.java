@@ -10,20 +10,17 @@ public class Ping {
 	private boolean fmlSupport;
 	
 	private Favicon favicon;
-	private boolean checkDispo;
 	
-	private Ping(String line1, String line2, Favicon favicon, boolean fml, boolean dispo) {
+	private int maxPlayers;
+	
+	private Ping(String line1, String line2, Favicon favicon, boolean fml, int max) {
 		
 		this.line1 = line1;
 		this.line2 = line2;
 		this.favicon = favicon;
 		this.fmlSupport = fml;
-		this.checkDispo = dispo;
+		this.maxPlayers = max;
 		
-	}
-
-	public boolean hasCheckDispo() {
-		return this.checkDispo;
 	}
 
 	public String getLine1() {
@@ -41,14 +38,18 @@ public class Ping {
 	public Favicon getFavicon() {
 		return favicon;
 	}
+	
+	public int getMaxPlayers() {
+		return maxPlayers;
+	}
 
 	public static class PingBuilder {
 		
 		private String line1;
 		private String line2;
 		private boolean fml;	
-		private boolean dispo;
 		private Favicon favicon;
+		private int max;
 		
 		public PingBuilder setLine1(String line1) {
 			this.line1 = line1;
@@ -57,11 +58,6 @@ public class Ping {
 		
 		public PingBuilder setFmlSupport(boolean fml) {
 			this.fml = fml;
-			return this;
-		}
-		
-		public PingBuilder setCheckDisponibility(boolean dispo) {
-			this.dispo = dispo;
 			return this;
 		}
 		
@@ -75,9 +71,14 @@ public class Ping {
 			return this;
 		}
 		
+		public PingBuilder setMaxPlayer(int max) {
+			this.max = max;
+			return this;
+		}
+		
 		public Ping build() {
 			
-			return new Ping(this.line1,this.line2,this.favicon,this.fml,this.dispo);
+			return new Ping(this.line1,this.line2,this.favicon,this.fml,this.max);
 			
 		}
 		
