@@ -155,6 +155,8 @@ public class PingManager {
 
 	private Ping getPingFromFile(File f) throws Exception{
 
+		this.initMotdFileConfiguration(f);
+		
 		Configuration config = this.config.getConfiguration(f);
 		PingBuilder builder = new PingBuilder();
 		
