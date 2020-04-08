@@ -160,7 +160,11 @@ public class PingManager {
 				}
 
 				try {
-					this.addHostPing(host, this.getPingFromFile(file));
+					Ping ping = this.getPingFromFile(file);
+					this.addHostPing(host, ping);
+					if(ping.hasFmlSupport()) {
+						this.forgePingSupport.addHost(host);
+					}
 				} catch (Exception e) {
 					e.printStackTrace();
 					continue;
