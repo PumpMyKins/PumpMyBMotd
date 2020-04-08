@@ -12,14 +12,11 @@ import java.util.Map.Entry;
 
 import javax.imageio.ImageIO;
 
-import fr.pumpmybmotd.MainMotd;
 import fr.pumpmybmotd.config.ConfigUtils;
 import fr.pumpmybmotd.motd.Ping.PingBuilder;
 import net.md_5.bungee.api.Favicon;
-import net.md_5.bungee.api.ProxyServer;
 import net.md_5.bungee.api.config.ListenerInfo;
 import net.md_5.bungee.api.config.ServerInfo;
-import net.md_5.bungee.api.scheduler.GroupedThreadFactory.BungeeGroup;
 import net.md_5.bungee.config.Configuration;
 import net.md_5.bungee.config.YamlConfiguration;
 
@@ -345,8 +342,9 @@ public class PingManager {
 		return pings;
 	}
 
-	public void clearPings() {
+	public void clear() {
 		this.pings.clear();
+		this.forgePingSupport.clear();
 	}
 
 	public ConfigUtils getConfig() {
