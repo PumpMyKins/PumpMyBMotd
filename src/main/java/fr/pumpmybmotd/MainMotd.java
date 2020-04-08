@@ -1,5 +1,7 @@
 package fr.pumpmybmotd;
 
+import java.util.Map.Entry;
+
 import fr.pumpmybmotd.commands.AddMotdSubCommand;
 import fr.pumpmybmotd.commands.GetMotdSubCommand;
 import fr.pumpmybmotd.commands.HelpMotdSubCommand;
@@ -8,6 +10,8 @@ import fr.pumpmybmotd.commands.MotdCommandExecutor;
 import fr.pumpmybmotd.commands.ReloadMotdSubCommand;
 import fr.pumpmybmotd.config.ConfigUtils;
 import fr.pumpmybmotd.motd.PingManager;
+import net.md_5.bungee.api.config.ListenerInfo;
+import net.md_5.bungee.api.config.ServerInfo;
 import net.md_5.bungee.api.plugin.Plugin;
 
 public class MainMotd extends Plugin{
@@ -47,6 +51,28 @@ public class MainMotd extends Plugin{
 		
 		getProxy().getPluginManager().registerCommand(this, motdCommandExec);
 		
+	}
+	
+	@SuppressWarnings("deprecation")
+	public ServerInfo getServerInfoWithForcedHost(String host) {
+		String serverName = new String();
+		for (ListenerInfo listener : getProxy().getConfig().getListeners()) {
+
+			for (Entry<String, String> entry : listener.getForcedHosts().entrySet()) {
+				if(entry.getKey().equals(host)) {
+					serverName = entry.getValue();
+					break;
+				}
+			}
+			if(!serverName.isEmpty()) {
+				break;
+			}
+		}		
+		
+		if(this.getProxy().getServers().keySet().contains(serverName)) {
+			return this.getProxy().getServerInfo(serverName);
+		}
+		return null;		
 	}
 	
 }
