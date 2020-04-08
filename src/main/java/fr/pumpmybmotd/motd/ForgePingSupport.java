@@ -31,7 +31,7 @@ public class ForgePingSupport {
 				}
 				
 			}
-		}, 1, 5, TimeUnit.MINUTES);
+		}, 5, 5, TimeUnit.MINUTES);
 		
 	}
 
