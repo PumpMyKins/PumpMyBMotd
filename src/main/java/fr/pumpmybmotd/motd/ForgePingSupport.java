@@ -31,7 +31,7 @@ public class ForgePingSupport {
 				}
 				
 			}
-		}, 5, 5, TimeUnit.MINUTES);
+		}, 30, 30, TimeUnit.MINUTES);
 		
 	}
 
@@ -67,8 +67,16 @@ public class ForgePingSupport {
 					System.out.println("ForgePingSupport : " + host + " ping callback : " + result.getModinfo().getModList().size() + " mods found !");
 					forges.replace(host, result.getModinfo().getModList());
 				}else {
-					System.out.println("ForgePingSupport : " + host + " ping error !");
+					System.out.println("ForgePingSupport : " + host + " ping error ! Schedule another test in 2 minutes");
 					forges.replace(host, new ArrayList<ModItem>());
+					MainMotd mainMotd = manager.getConfig().getMain();
+					mainMotd.getProxy().getScheduler().schedule(mainMotd, new Runnable() {
+						
+						@Override
+						public void run() {
+							refreshHostModList(host);							
+						}
+					}, 2, TimeUnit.MINUTES);
 				}
 			}
 		});
