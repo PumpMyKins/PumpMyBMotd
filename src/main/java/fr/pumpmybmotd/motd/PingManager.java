@@ -28,6 +28,7 @@ public class PingManager {
 	private HashMap<String, Ping> pings;
 	private Ping defaultPing;
 	private ConfigUtils config;
+	private ForgePingSupport forgePingSupport;
 
 	public static class PingConstant {
 
@@ -42,6 +43,8 @@ public class PingManager {
 		this.config = config;
 
 		this.defaultPing = null;
+		
+		this.forgePingSupport = new ForgePingSupport(this);
 
 	}
 
@@ -354,4 +357,8 @@ public class PingManager {
 		return defaultPing;
 	}
 
+	public ForgePingSupport getForgePingSupport() {
+		return forgePingSupport;
+	}
+	
 }
