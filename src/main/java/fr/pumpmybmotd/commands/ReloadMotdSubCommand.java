@@ -20,7 +20,7 @@ public class ReloadMotdSubCommand implements ISubCommand{
 	public void onSubCommand(Command exec, CommandSender sender, List<String> args) {
 
 		try {
-			manager.clearPings();
+			manager.clear();
 			manager.load();
 			sender.sendMessage(new ComponentBuilder("PumpMyMotd configuration reloaded succesfuly !").color(ChatColor.AQUA).create());
 		} catch (Exception e) {
