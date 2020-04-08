@@ -31,16 +31,17 @@ public class ForgePingSupport {
 				}
 				
 			}
-		}, 0, 5, TimeUnit.MINUTES);
+		}, 1, 5, TimeUnit.MINUTES);
 		
 	}
 
 	public void addHost(String host) {
 		if(!this.forges.containsKey(host)) {
 			this.forges.put(host, new ArrayList<ModItem>());
+			System.out.println("ForgePingSupport : " + host + " added in ForgePing support list !");
 			this.refreshHostModList(host);
 		}else {
-			System.out.println("ForgePingSupport : " + host + "already in ForgePing support list !");
+			System.out.println("ForgePingSupport : " + host + " already in ForgePing support list !");
 		}		
 	}
 
@@ -77,7 +78,7 @@ public class ForgePingSupport {
 		if(this.forges.containsKey(host)) {
 			return this.forges.get(host);
 		}
-		System.out.println("ForgePingSupport : " + host + "no found !");
+		System.out.println("ForgePingSupport : " + host + " not found !");
 		return new ArrayList<ModItem>();
 	}
 
