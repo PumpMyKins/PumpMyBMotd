@@ -1,7 +1,6 @@
 package fr.pumpmybmotd;
 
 import java.net.InetSocketAddress;
-import java.util.ArrayList;
 
 import fr.pumpmybmotd.motd.Ping;
 import fr.pumpmybmotd.motd.PingManager;
@@ -48,7 +47,7 @@ public class ProxyPingListener implements Listener {
 		ModInfo modInfo = newServerPing.getModinfo();
 		if(ping.hasFmlSupport()) {
 			modInfo.setType("FML");
-			modInfo.setModList(new ArrayList<ServerPing.ModItem>());
+			modInfo.setModList(this.manager.getForgePingSupport().getModList(host));
 		}else {
 			modInfo.setType("VANILLA");
 		}
