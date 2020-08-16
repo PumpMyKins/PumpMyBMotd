@@ -32,7 +32,6 @@ public class ForgePingSupport {
 		if(!this.forges.containsKey(host)) {
 			this.forges.put(host, new ArrayList<ModItem>());
 			System.out.println("ForgePingSupport : " + host + " added in ForgePing support list !");
-			this.refreshHostModList(host);
 		}else {
 			System.out.println("ForgePingSupport : " + host + " already in ForgePing support list !");
 		}		
