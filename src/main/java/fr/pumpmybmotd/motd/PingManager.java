@@ -173,6 +173,8 @@ public class PingManager {
 			}
 			
 		}
+		
+		this.forgePingSupport.refreshAll();
 
 	}
 
