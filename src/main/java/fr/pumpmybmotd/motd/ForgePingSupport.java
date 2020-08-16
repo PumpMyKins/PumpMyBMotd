@@ -19,20 +19,13 @@ public class ForgePingSupport {
 
 	public ForgePingSupport(PingManager pingManager) {
 		this.manager = pingManager;
-		this.forges = new HashMap<String, List<ModItem>>();
-
-		MainMotd mainMotd = this.manager.getConfig().getMain();
-		mainMotd.getProxy().getScheduler().schedule(mainMotd, new Runnable() {
-			
-			@Override
-			public void run() {
-				for (String host : forges.keySet()) {
-					refreshHostModList(host);
-				}
-				
-			}
-		}, 30, 30, TimeUnit.MINUTES);
-		
+		this.forges = new HashMap<String, List<ModItem>>();		
+	}
+	
+	public void refreshAll() {
+		for (String host : forges.keySet()) {
+			refreshHostModList(host);
+		}
 	}
 
 	public void addHost(String host) {
@@ -51,6 +44,10 @@ public class ForgePingSupport {
 	}
 
 	private void refreshHostModList(String host) {
+		this.refreshHostModList(host,0);
+	}
+	
+	private void refreshHostModList(String host, int i) {
 
 		ServerInfo info = this.manager.getConfig().getMain().getServerInfoWithForcedHost(host);
 
@@ -59,6 +56,12 @@ public class ForgePingSupport {
 			return;
 		}
 
+		final int newI = i*2 + 1;
+		if(newI > 60) {
+			System.out.println("ForgePingSupport : " + host + " skip ping (iter>60) !");
+			return;
+		}
+		
 		info.ping(new Callback<ServerPing>() {
 			
 			@Override
@@ -74,9 +77,10 @@ public class ForgePingSupport {
 						
 						@Override
 						public void run() {
-							refreshHostModList(host);							
+							refreshHostModList(host,newI);							
 						}
-					}, 2, TimeUnit.MINUTES);
+						
+					}, newI, TimeUnit.MINUTES);
 				}
 			}
 		});
