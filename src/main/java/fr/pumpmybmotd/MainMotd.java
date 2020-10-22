@@ -3,6 +3,7 @@ package fr.pumpmybmotd;
 import java.util.Map.Entry;
 
 import fr.pumpmybmotd.commands.AddMotdSubCommand;
+import fr.pumpmybmotd.commands.ForgeReloadMotdSubCommand;
 import fr.pumpmybmotd.commands.GetMotdSubCommand;
 import fr.pumpmybmotd.commands.HelpMotdSubCommand;
 import fr.pumpmybmotd.commands.ListMotdSubCommand;
@@ -47,6 +48,7 @@ public class MainMotd extends Plugin{
 		motdCommandExec.addSubCommand("add", "pumpmymotd.command.add" , new AddMotdSubCommand(this.manager));
 		motdCommandExec.addSubCommand("list", "pumpmymotd.command.list", new ListMotdSubCommand(this.manager));
 		motdCommandExec.addSubCommand("get", "pumpmymotd.command.get", new GetMotdSubCommand(this.manager));
+		motdCommandExec.addSubCommand("forge-reload", "pumpmymotd.command.forge-reload", new ForgeReloadMotdSubCommand(this.manager));
 		
 		
 		getProxy().getPluginManager().registerCommand(this, motdCommandExec);
