@@ -124,7 +124,7 @@ public class PingManager {
 		faviconFile.mkdir();
 
 		try {
-			this.createDefaultMtdFile();
+			this.createDefaultMotdFile();
 		} catch (Exception e) {
 			e.printStackTrace();
 			return;
@@ -277,7 +277,7 @@ public class PingManager {
 
 	}
 
-	private void createDefaultMtdFile() throws Exception {
+	private void createDefaultMotdFile() throws Exception {
 
 		File defaultFile = new File(this.config.getDataFolder(),PingConstant.DEFAULT_MOTD_FILE_NAME);
 		defaultFile.createNewFile();
