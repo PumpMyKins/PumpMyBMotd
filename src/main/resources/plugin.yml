@@ -1,6 +1,6 @@
 name: PumpMyBMotd
 main: fr.pumpmybmotd.MainMotd
-version: 3.1
+version: 3.3
 author: Clem_Fern
 commands:
   pumpmybmotd:
