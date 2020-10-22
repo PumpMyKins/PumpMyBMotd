@@ -68,7 +68,7 @@ public class MotdCommandExecutor extends Command implements TabExecutor{
 		
 		if( args.length < 1 ) {
 
-			new HelpMotdSubCommand().onSubCommand(this, sender);
+			new HelpMotdSubCommand(this.main).onSubCommand(this, sender);
 			return;
 
 		}else {
@@ -99,7 +99,7 @@ public class MotdCommandExecutor extends Command implements TabExecutor{
 
 			}
 
-			new HelpMotdSubCommand().onSubCommand(this,sender);
+			new HelpMotdSubCommand(this.main).onSubCommand(this,sender);
 			return;
 
 		}

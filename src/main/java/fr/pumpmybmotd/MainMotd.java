@@ -42,7 +42,7 @@ public class MainMotd extends Plugin{
 		
 		MotdCommandExecutor motdCommandExec = new MotdCommandExecutor(this);
 		
-		motdCommandExec.addSubCommand("help", new HelpMotdSubCommand());
+		motdCommandExec.addSubCommand("help", new HelpMotdSubCommand(this));
 		motdCommandExec.addSubCommand("reload", "pumpmymotd.command.reload" , new ReloadMotdSubCommand(this.manager));
 		motdCommandExec.addSubCommand("add", "pumpmymotd.command.add" , new AddMotdSubCommand(this.manager));
 		motdCommandExec.addSubCommand("list", "pumpmymotd.command.list", new ListMotdSubCommand(this.manager));
