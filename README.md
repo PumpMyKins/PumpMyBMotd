@@ -1,3 +1,3 @@
 # PumpMyMotd
 Bungeecord Motd plugin
-Author Clem Fern
+Author Clem Fern, Thebloodshadow
